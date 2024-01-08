@@ -12,7 +12,7 @@ export const pastriesApi = createApi({
         getPastrieById: builder.query({
            query: (pastryId) => `game/pastrie/${pastryId}`,
         }),
-        reducePastriesQuantity: builder.query({
+        reducePastriesQuantity: builder.mutation({
             query: (quantity) => `/game/win-pastries/${quantity}`,
         })
     }),
@@ -20,5 +20,5 @@ export const pastriesApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetAllPastriesQuery, useGetPastrieByIdQuery, useReducePastriesQuantityQuery } = pastriesApi
+export const { useGetAllPastriesQuery, useGetPastrieByIdQuery, useReducePastriesQuantityMutation } = pastriesApi
 
