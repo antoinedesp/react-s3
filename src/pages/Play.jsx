@@ -28,7 +28,7 @@ export default function Play() {
             response.data.map((pastrie) => {
                 _wonPastries.push(pastrie);
             });
-            setWonPastries([...wonPastries, ..._wonPastries.map((pastrie) => `Won ${pastrie.name}`)]);
+            setWonPastries([...wonPastries, ..._wonPastries.map((pastrie) => `Vous avez gagné un ${pastrie.name} ! `)]);
         }).catch();
     }
 
@@ -38,7 +38,6 @@ export default function Play() {
         const elementCounts = uniqueElements.map(value => `${results.filter(str => str === value).length}`);
 
         if(elementCounts.includes('4')) {
-            alert(4);
             winPastry(4);
             return 4;
         }
@@ -81,7 +80,7 @@ export default function Play() {
         <div className="flex flex-col gap-4 items-center">
 
 
-            <p className="text-2xl font-bold pt-4 italic">You have {availableGames} games left</p>
+            <p className="text-2xl font-bold pt-4 italic">{availableGames === 3 ? <>Vous avez trois parties</> : availableGames === 2 ? <>Encore deux parties!</> : availableGames === 1 ? <>Plus qu'une partie!</> : <>Il ne vous reste aucune partie :(</>}</p>
             <Confetti active={confettiActive}/>
 
             <div>
