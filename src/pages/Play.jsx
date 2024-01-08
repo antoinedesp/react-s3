@@ -23,8 +23,13 @@ export default function Play() {
         showConfetti();
         // should win 1 pastrie for 2 dice, 2 pastries for 3 dices, 3 pastries for 4 dices
         let wonPastriesCount = number - 1;
-        reducePastriesQuantity(wonPastriesCount);
-        setWonPastries([...wonPastries, `Won ${wonPastriesCount} pastry won`]);
+        reducePastriesQuantity(wonPastriesCount).then((response) => {
+            const _wonPastries = [];
+            response.data.map((pastrie) => {
+                _wonPastries.push(pastrie);
+            });
+            setWonPastries([...wonPastries, ..._wonPastries.map((pastrie) => `Won ${pastrie.name}`)]);
+        }).catch();
     }
 
     const checkPartyResults = () => {
