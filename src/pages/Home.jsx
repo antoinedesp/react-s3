@@ -26,10 +26,14 @@ export default function Home() {
               ) : (
                   pastriesData && pastriesData.map((pastrie) => {
                       return (
-                          <div className="border p-5" key={pastrie.id * Date.now()}>
-                              <img src={pastrie.image} alt={`Image of ${pastrie.name}`}/>
-                              <h1>{pastrie.name}</h1>
-                              <i>{pastrie.quantity}</i>
+                          <div className="relative border" key={pastrie.id * Date.now()}>
+                              <div className="w-full">
+                                  <img src="https://picsum.photos/200/300" className="object-cover" alt={`Image of ${pastrie.name}`}/>
+                              </div>
+                              <div className="p-5">
+                                  <h1 className="text-md font-semibold text-slate-600">{pastrie.name}</h1>
+                              <div className="absolute text-2xl font-bold text-slate-300 right-5 bottom-5">{pastrie.quantity}</div>
+                              </div>
                           </div>
                       );
 
