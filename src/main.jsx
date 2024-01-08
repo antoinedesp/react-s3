@@ -8,6 +8,7 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
+import Play from "./pages/Play.jsx";
 
 const router = createBrowserRouter([
     {
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
         path: "/play",
         element: (
             <App>
-                Play
+                <Play/>
             </App>
         ),
     },
