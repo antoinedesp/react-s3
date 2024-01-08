@@ -8,7 +8,9 @@ export default function Navigation() {
                 <NavLink
                     to="/"
                     className={(function ({isActive, isPending}) {
-                        return "transition hover:text-blue-700 " + isActive ? "text-red-700 " : isPending ? "text-blue-500 " : "text-black ";
+                        return isActive
+                            ? "transition hover:text-blue-700  text-blue-700"
+                            : "transition hover:text-blue-700  text-black";
                     })}>
                     Acceuil
                 </NavLink>
@@ -17,12 +19,10 @@ export default function Navigation() {
             <div>
                 <NavLink
                     to="/login"
-                    className={((isActive, isPending) => {
-                        return "transition hover:text-blue-700 " + isActive
-                            ? "text-blue-700 "
-                            : isPending
-                                ? "text-blue-500 "
-                                : "";
+                    className={(function ({isActive, isPending}) {
+                        return isActive
+                            ? "transition hover:text-blue-700 text-blue-700"
+                            : "transition hover:text-blue-700  text-black";
                     })}>
                     Login
                 </NavLink>
@@ -31,12 +31,10 @@ export default function Navigation() {
             <div>
                 <NavLink
                     to="/contact"
-                    className={((isActive, isPending) => {
-                        return "transition hover:text-blue-700 " + isActive
-                            ? "text-blue-700 "
-                            : isPending
-                                ? "text-blue-500 "
-                                : "";
+                    className={(function ({isActive, isPending}) {
+                        return isActive
+                            ? "transition hover:text-blue-700  text-blue-700"
+                            : "transition hover:text-blue-700  text-black";
                     })}>
                     Contact
                 </NavLink>

@@ -1,54 +1,13 @@
-import {
-    createBrowserRouter,
-    RouterProvider,
-  } from "react-router-dom";
-import Home from './Home.jsx';
-import Navigation from "./Navigation.jsx";
+
+import Navigation from "./components/Navigation.jsx";
 import "./assets/styles/index.scss";
 
-const router = createBrowserRouter([
-{
-    path: "/",
-    element: (
-        <>
-            <Navigation/>
-            <Home/>
-        </>
-    ),
-},
-{
-    path: "/login",
-    element: (
-        <>
-            <Navigation/>
-            Login
-        </>
-    ),
-},
-{
-    path: "/contact",
-    element: (
-        <>
-            <Navigation/>
-            Contact
-        </>
-    ),
-},
-{
-    path: "/play",
-    element: (
-        <>
-            <Navigation/>
-            Play
-        </>
-    ),
-},
-]);
 
-export default function App() {
+export default function App({ children }) {
     return (
-        <>
-            <RouterProvider router={router} />
-        </>
+        <div className="w-full md:w-3/4 lg:w-1/2 xl:w-1/3 mx-auto p-5">
+            <Navigation />
+            { children }
+        </div>
     )
 }
