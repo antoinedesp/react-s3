@@ -4,32 +4,50 @@ import {
   } from "react-router-dom";
 import Home from './Home.jsx';
 import Navigation from "./Navigation.jsx";
-  
+import "./assets/styles/index.scss";
+
 const router = createBrowserRouter([
 {
     path: "/",
     element: (
-    <Home/>
+        <>
+            <Navigation/>
+            <Home/>
+        </>
     ),
 },
 {
     path: "/login",
-    element: <div>Login</div>,
+    element: (
+        <>
+            <Navigation/>
+            Login
+        </>
+    ),
 },
 {
     path: "/contact",
-    element: <div>Contact</div>,
+    element: (
+        <>
+            <Navigation/>
+            Contact
+        </>
+    ),
 },
 {
     path: "/play",
-    element: <div>Play</div>,
+    element: (
+        <>
+            <Navigation/>
+            Play
+        </>
+    ),
 },
 ]);
 
 export default function App() {
     return (
         <>
-            <Navigation />
             <RouterProvider router={router} />
         </>
     )
