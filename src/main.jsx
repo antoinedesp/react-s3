@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
+import Login from "./pages/Login.jsx";
 import { store } from './store.js';
 import {
     createBrowserRouter,
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
         path: "/login",
         element: (
             <App>
-                Login
+                <Login/>
             </App>
         ),
     },

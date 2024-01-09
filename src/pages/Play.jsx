@@ -21,6 +21,7 @@ export default function Play() {
 
     const winPastry = (number) => {
         showConfetti();
+        setAvailableGames(0);
         // should win 1 pastrie for 2 dice, 2 pastries for 3 dices, 3 pastries for 4 dices
         let wonPastriesCount = number - 1;
         reducePastriesQuantity(wonPastriesCount).then((response) => {
