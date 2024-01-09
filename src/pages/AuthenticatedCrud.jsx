@@ -2,25 +2,28 @@ import {useGetAllPastriesQuery} from "../services/pastries.js";
 import {useLogoutMutation} from "../services/authentication.js";
 import {useState} from "react";
 import {logout} from "../services/user.js";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 export function AuthenticatedCrud() {
 
     const { data: pastriesData, error: pastriesError, isLoading: pastriesAreLoading } = useGetAllPastriesQuery();
     const [logoutMutation, { isLoading: isLogoutLoading }] = useLogoutMutation();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const isUserAuthenticated = useSelector((state) => state.user.isAuthenticated);
     const dispatcher = useDispatch();
     const logoutAttempt = () => {
         logoutMutation().then((response) => {
             if (response.data && response.data.loggedIn === false) {
-                setIsAuthenticated(false);
                 dispatcher(logout())
             }
             else {
                 alert('Erreur');
             }
         });
+    }
+
+    const deletePastrieAttempt = (pastrieId) => {
+        if(confirm('Êtes vous sur de vouloir supprimer cet élément ?')) {
+            // TODO
+        }
     }
 
     return (<div className="grid grid-rows-1 gap-8">
@@ -45,7 +48,8 @@ export function AuthenticatedCrud() {
                                     Modifier
                                 </div>
                                 <div
-                                    className="w-32 text-center inline-block rounded-full bg-red-400 color-white px-8 py-2 text-white hover:bg-red-600 transition">
+                                    className="w-32 text-center inline-block rounded-full bg-red-400 color-white px-8 py-2 text-white hover:bg-red-600 transition"
+                                    onClick={() => deletePastrieAttempt(pastrie.quantity)}>
                                     Supprimer
                                 </div>
                             </div>
