@@ -28,10 +28,86 @@ export const authenticationApi = createApi({
                 credentials: "include",
             })
         }),
+        orderedByQuantityPastries: builder.mutation({
+            query: ({ offset, limit }) => ({
+                url: `/api/pastries/order-quantity/${offset}/${limit}`,
+                method: 'GET',
+                credentials: "include",
+            })
+        }),
+        paginatedPastries: builder.mutation({
+            query: ({ offset, limit }) => ({
+                url: `/api/pastries/${offset}/${limit}`,
+                method: 'GET',
+                credentials: "include",
+            })
+        }),
+        addPastry: builder.mutation({
+            query: ({
+                        name,
+                        quantity,
+                        image,
+                        choice
+                    }) => ({
+                url: `api/pastrie/`,
+                method: 'POST',
+                params: {
+                    name: name,
+                    quantity: quantity,
+                    image: image,
+                    choice: choice
+                },
+                credentials: "include",
+            })
+        }),
+        editPastry: builder.mutation({
+            query: ({
+                id,
+                name,
+                quantity,
+                image,
+                choice
+                }) => ({
+                url: `api/pastrie/${id}`,
+                method: 'PUT',
+                params: {
+                    name: name,
+                    quantity: quantity,
+                    image: image,
+                    choice: choice
+                },
+                credentials: "include",
+            })
+        }),
+        deletePastry: builder.mutation({
+            query: (pastrieId) => ({
+                url: `api/pastrie/${pastrieId}`,
+                method: 'DELETE',
+                credentials: "include",
+            })
+        }),
+        searchPastry: builder.mutation({
+            query: (pastrieKeyWord) => ({
+                url: `/api/pastries-search/${pastrieKeyWord}`,
+                method: 'GET',
+                credentials: "include",
+            })
+        }),
     }),
 })
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useIsAuthenticatedMutation, useLogoutMutation, useLoginMutation } = authenticationApi
+export const
+    {
+        useIsAuthenticatedMutation,
+        useLogoutMutation,
+        useLoginMutation,
+        useOrderedByQuantityPastriesMutation,
+        usePaginatedPastriesMutation,
+        useAddPastryMutation,
+        useEditPastryMutation,
+        useDeletePastryMutation,
+        useSearchPastryMutation
+    } = authenticationApi
 
