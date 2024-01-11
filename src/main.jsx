@@ -10,6 +10,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import Play from "./pages/Play.jsx";
+import Contact from "./pages/Contact.jsx";
 
 const router = createBrowserRouter([
     {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
         path: "/contact",
         element: (
             <App>
-                Contact
+                <Contact />
             </App>
         ),
     },
