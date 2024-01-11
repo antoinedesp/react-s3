@@ -3,7 +3,7 @@ import {useIsAuthenticatedMutation, useLoginMutation} from "../services/authenti
 import {AuthenticatedCrud} from "./AuthenticatedCrud.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {login, logout} from "../services/user.js";
-import LoginForm from "./LoginForm.jsx";
+import LoginForm from "../components/LoginForm.jsx";
 
 export default function Login() {
 
@@ -41,7 +41,7 @@ export default function Login() {
             <p className="text-2xl font-bold pt-4 italic">{isUserAuthenticated ? <>Backoffice</> : <>Authentification</>}</p>
 
             <div>
-                
+
                 {
                     isUserAuthenticated
                         ? <AuthenticatedCrud/>
