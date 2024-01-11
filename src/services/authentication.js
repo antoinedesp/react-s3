@@ -43,39 +43,18 @@ export const authenticationApi = createApi({
             })
         }),
         addPastry: builder.mutation({
-            query: ({
-                        name,
-                        quantity,
-                        image,
-                        choice
-                    }) => ({
+            query: (data) => ({
                 url: `api/pastrie/`,
                 method: 'POST',
-                params: {
-                    name: name,
-                    quantity: quantity,
-                    image: image,
-                    choice: choice
-                },
+                body: data,
                 credentials: "include",
             })
         }),
         editPastry: builder.mutation({
-            query: ({
-                id,
-                name,
-                quantity,
-                image,
-                choice
-                }) => ({
-                url: `api/pastrie/${id}`,
+            query: (data) => ({
+                url: `api/pastrie/${data.id}`,
                 method: 'PUT',
-                params: {
-                    name: name,
-                    quantity: quantity,
-                    image: image,
-                    choice: choice
-                },
+                body: data,
                 credentials: "include",
             })
         }),
@@ -87,8 +66,8 @@ export const authenticationApi = createApi({
             })
         }),
         searchPastry: builder.mutation({
-            query: (pastrieKeyWord) => ({
-                url: `/api/pastries-search/${pastrieKeyWord}`,
+            query: (data) => ({
+                url: `/api/pastries-search/${data.keyword}`,
                 method: 'GET',
                 credentials: "include",
             })

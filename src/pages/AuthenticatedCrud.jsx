@@ -10,7 +10,7 @@ import {logout} from "../services/user.js";
 import {useDispatch} from "react-redux";
 export function AuthenticatedCrud() {
 
-    const { refresh: fetchAllPastries, data: pastriesData, error: pastriesError, isLoading: pastriesAreLoading } = useGetAllPastriesQuery();
+    const { refetch: refetchAllPastriesQuery, data: pastriesData, error: pastriesError, isLoading: pastriesAreLoading } = useGetAllPastriesQuery();
 
     const [logoutMutation, { isLoading: isLogoutLoading }] = useLogoutMutation();
     const [addPastryMutation, { isLoading: isPastryAdditionLoading }] = useAddPastryMutation();
@@ -31,10 +31,6 @@ export function AuthenticatedCrud() {
 
     const dispatcher = useDispatch();
 
-    const forceRefresh = () => {
-        fetchAllPastries();
-    }
-
     const addPastrieAttempt = () => {
         addPastryMutation({
             image: newPastryImage,
@@ -47,7 +43,7 @@ export function AuthenticatedCrud() {
             }
             else if(response.data) {
                 alert('Succès');
-                forceRefresh();
+                refetchAllPastriesQuery();
             }
         })
     }
@@ -66,8 +62,8 @@ export function AuthenticatedCrud() {
             }
             else if(response.data) {
                 alert('Succès');
-                forceRefresh();
                 setIsEditingPastry(0);
+                refetchAllPastriesQuery();
             }
         })
     }
@@ -99,7 +95,8 @@ export function AuthenticatedCrud() {
                    if(response.data && response.data.status === 200) {
 
                        alert('Supprimé avec succès');
-                       forceRefresh();
+                       refetchAllPastriesQuery();
+
                    }
                }
 
@@ -137,7 +134,7 @@ export function AuthenticatedCrud() {
 
         {pastriesData && pastriesData.map((pastrie) => {
             return isEditingPastry !== 0 && isEditingPastry === pastrie.id ? (
-                    <div key={pastrie.id * Date.now()} className="border-2 max-h-56 h-56 grid grid-cols-12">
+                    <div key={pastrie.id} className="border-2 max-h-56 h-56 grid grid-cols-12">
                         <div className="col-span-4 overflow-hidden">
                             <img src="https://picsum.photos/200/300" className="object-cover w-full"
                                  alt={`Image of ${pastrie.name}`}/>
@@ -145,9 +142,9 @@ export function AuthenticatedCrud() {
                         <div className="col-span-8 p-4">
                             <div
                                 className="flex flex-col gap-2 place-items-center align-middle justify-items-center">
-                                <input defaultValue={editingPastryImage} onChange={event => setEditingPastryImage(event.target.value)} className="w-48 text-center inline-block rounded-full px-8 py-2 transition border" type="text"/>
-                                <input defaultValue={editingPastryName} onChange={event => setEditingPastryName(event.target.value)} className="w-48 text-center inline-block rounded-full px-8 py-2 transition border" type="text"/>
-                                <input defaultValue={editingPastryQuantity} onChange={event => setEditingPastryQuantity(event.target.value)} className="w-48 text-center inline-block rounded-full px-8 py-2 transition border" type="number"/>
+                                <input key="image" defaultValue={pastrie.image} onChange={event => setEditingPastryImage(event.target.value)} className="w-48 text-center inline-block rounded-full px-8 py-2 transition border" type="text"/>
+                                <input key="name" defaultValue={pastrie.name} onChange={event => setEditingPastryName(event.target.value)} className="w-48 text-center inline-block rounded-full px-8 py-2 transition border" type="text"/>
+                                <input key="quantity" defaultValue={pastrie.quantity} onChange={event => setEditingPastryQuantity(event.target.value)} className="w-48 text-center inline-block rounded-full px-8 py-2 transition border" type="number"/>
                                 <div
                                     className="flex flex-row space-x-4">
                                     <div
@@ -165,7 +162,7 @@ export function AuthenticatedCrud() {
                         </div>
                     </div>
                 ) :
-                <div key={pastrie.id * Date.now()} className="border-2 max-h-36 h-36 grid grid-cols-12">
+                <div key={pastrie.id} className="border-2 max-h-36 h-36 grid grid-cols-12">
                     <div className="col-span-4 overflow-hidden">
                         <img src="https://picsum.photos/200/300" className="object-cover w-full"
                              alt={`Image of ${pastrie.name}`}/>
