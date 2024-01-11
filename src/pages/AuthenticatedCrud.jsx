@@ -162,7 +162,7 @@ export function AuthenticatedCrud() {
                         </div>
                     </div>
                 ) :
-                <div key={pastrie.id} className="border-2 max-h-36 h-36 grid grid-cols-12">
+                <div key={pastrie.id} onClick={() => showEditionForm(pastrie)} className="hover:bg-slate-100 hover:cursor-pointer hover:border-slate-300 border max-h-36 h-36 grid grid-cols-12 transition">
                     <div className="col-span-4 overflow-hidden">
                         <img src="https://picsum.photos/200/300" className="object-cover w-full"
                              alt={`Image of ${pastrie.name}`}/>
