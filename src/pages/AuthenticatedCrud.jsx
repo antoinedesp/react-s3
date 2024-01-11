@@ -100,6 +100,9 @@ export function AuthenticatedCrud() {
                    }
                }
 
+                setIsEditingPastry(0);
+                refetchAllPastriesQuery();
+
             });
         }
     }
