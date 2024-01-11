@@ -113,23 +113,23 @@ export function AuthenticatedCrud() {
 
     return (<div className="grid grid-rows-1 gap-8">
         <button
-            className="w-48 text-center inline-block rounded-full bg-blue-500 color-white px-8 py-2 text-white hover:bg-blue-700 transition"
-            onClick={() => setIsPastryAddFormShown(true)}>
-            Ajouter une patisserie
+            className="w-full text-center inline-block rounded-full bg-blue-500 color-white px-8 py-2 text-white hover:bg-blue-700 transition"
+            onClick={() => setIsPastryAddFormShown(!isPastryAddFormShown)}>
+            {!isPastryAddFormShown ? 'Ajouter une patisserie' : 'Cacher le formulaire'}
         </button>
         {
             isPastryAddFormShown ? (
-                <>
-                    <input placeholder="URL Image" className="w-48 text-center inline-block rounded-full px-8 py-2 transition border" onChange={(e) => setNewPastryImage(e.target.value)} type="text"/>
-                    <input placeholder="Titre" className="w-48 text-center inline-block rounded-full px-8 py-2 transition border" onChange={(e) => setNewPastryName(e.target.value)} type="text"/>
-                    <input placeholder="Quantité" className="w-48 text-center inline-block rounded-full px-8 py-2 transition border" onChange={(e) => setNewPastryQuantity(e.target.value)} type="number"/>
+                <div className="w-full grid grid-rows-1 gap-2">
+                    <input placeholder="URL Image" className="w-full text-center inline-block rounded-full px-8 py-2 transition border" onChange={(e) => setNewPastryImage(e.target.value)} type="text"/>
+                    <input placeholder="Titre" className="w-full text-center inline-block rounded-full px-8 py-2 transition border" onChange={(e) => setNewPastryName(e.target.value)} type="text"/>
+                    <input placeholder="Quantité" className="w-full text-center inline-block rounded-full px-8 py-2 transition border" onChange={(e) => setNewPastryQuantity(e.target.value)} type="number"/>
                     <button
-                        className="w-48 text-center inline-block rounded-full bg-blue-500 color-white px-8 py-2 text-white hover:bg-blue-700 transition"
+                        className="w-full text-center inline-block rounded-full bg-blue-500 color-white px-8 py-2 text-white hover:bg-blue-700 transition"
                         onClick={addPastrieAttempt}
                         >
                         Ajouter
                     </button>
-                </>) : <></>
+                </div>) : <></>
         }
 
         {pastriesData && pastriesData.map((pastrie) => {
@@ -142,9 +142,9 @@ export function AuthenticatedCrud() {
                         <div className="col-span-8 p-4">
                             <div
                                 className="flex flex-col gap-2 place-items-center align-middle justify-items-center">
-                                <input key="image" defaultValue={pastrie.image} onChange={event => setEditingPastryImage(event.target.value)} className="w-48 text-center inline-block rounded-full px-8 py-2 transition border" type="text"/>
-                                <input key="name" defaultValue={pastrie.name} onChange={event => setEditingPastryName(event.target.value)} className="w-48 text-center inline-block rounded-full px-8 py-2 transition border" type="text"/>
-                                <input key="quantity" defaultValue={pastrie.quantity} onChange={event => setEditingPastryQuantity(event.target.value)} className="w-48 text-center inline-block rounded-full px-8 py-2 transition border" type="number"/>
+                                <input key="image" defaultValue={pastrie.image} onChange={event => setEditingPastryImage(event.target.value)} className="w-full text-center inline-block rounded-full px-8 py-2 transition border" type="text"/>
+                                <input key="name" defaultValue={pastrie.name} onChange={event => setEditingPastryName(event.target.value)} className="w-full text-center inline-block rounded-full px-8 py-2 transition border" type="text"/>
+                                <input key="quantity" defaultValue={pastrie.quantity} onChange={event => setEditingPastryQuantity(event.target.value)} className="w-full text-center inline-block rounded-full px-8 py-2 transition border" type="number"/>
                                 <div
                                     className="flex flex-row space-x-4">
                                     <div
@@ -187,10 +187,9 @@ export function AuthenticatedCrud() {
                 </div>
         })}
         <button
-            className="w-48 text-center inline-block rounded-full bg-blue-500 color-white px-8 py-2 text-white hover:bg-blue-700 transition"
+            className="w-full text-center inline-block rounded-full bg-blue-500 color-white px-8 py-2 text-white hover:bg-blue-700 transition"
             onClick={logoutAttempt}>
             Déconnexion
         </button>
-
     </div>);
 }
