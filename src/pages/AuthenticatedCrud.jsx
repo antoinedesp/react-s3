@@ -116,18 +116,18 @@ export function AuthenticatedCrud() {
 
     return (<div className="grid grid-rows-1 gap-8">
         <button
-            className="w-full text-center inline-block rounded-full bg-blue-500 color-white px-8 py-2 text-white hover:bg-blue-700 transition"
+            className="w-full text-md font-semibold text-center border border-slate-300 inline-block rounded-sm bg-slate-50 color-white px-2 py-1 text-slate-500 hover:text-slate-600 hover:bg-slate-200 transition hover:cursor-pointer"
             onClick={() => setIsPastryAddFormShown(!isPastryAddFormShown)}>
             {!isPastryAddFormShown ? 'Ajouter une patisserie' : 'Cacher le formulaire'}
         </button>
         {
             isPastryAddFormShown ? (
                 <div className="w-full grid grid-rows-1 gap-2">
-                    <input placeholder="URL Image" className="w-full text-center inline-block rounded-full px-8 py-2 transition border" onChange={(e) => setNewPastryImage(e.target.value)} type="text"/>
-                    <input placeholder="Titre" className="w-full text-center inline-block rounded-full px-8 py-2 transition border" onChange={(e) => setNewPastryName(e.target.value)} type="text"/>
-                    <input placeholder="Quantité" className="w-full text-center inline-block rounded-full px-8 py-2 transition border" onChange={(e) => setNewPastryQuantity(e.target.value)} type="number"/>
+                    <input placeholder="URL Image" className="w-full text-sm text-center inline-block rounded-sm px-2 py-1 transition border" onChange={(e) => setNewPastryImage(e.target.value)} type="text"/>
+                    <input placeholder="Titre" className="w-full text-sm text-center inline-block rounded-sm px-2 py-1 transition border" onChange={(e) => setNewPastryName(e.target.value)} type="text"/>
+                    <input placeholder="Quantité" className="w-full text-sm text-center inline-block rounded-sm px-2 py-1 transition border" onChange={(e) => setNewPastryQuantity(e.target.value)} type="number"/>
                     <button
-                        className="w-full text-center inline-block rounded-full bg-blue-500 color-white px-8 py-2 text-white hover:bg-blue-700 transition"
+                        className="w-full text-md font-semibold text-center border border-slate-300 inline-block rounded-sm bg-slate-50 color-white px-2 py-1 text-slate-500 hover:text-slate-600 hover:bg-slate-200 transition hover:cursor-pointer"
                         onClick={addPastrieAttempt}
                         >
                         Ajouter
@@ -145,18 +145,18 @@ export function AuthenticatedCrud() {
                         <div className="col-span-8 p-4">
                             <div
                                 className="flex flex-col gap-2 place-items-center align-middle justify-items-center">
-                                <input key="image" defaultValue={pastrie.image} onChange={event => setEditingPastryImage(event.target.value)} className="w-full text-center inline-block rounded-full px-8 py-2 transition border" type="text"/>
-                                <input key="name" defaultValue={pastrie.name} onChange={event => setEditingPastryName(event.target.value)} className="w-full text-center inline-block rounded-full px-8 py-2 transition border" type="text"/>
-                                <input key="quantity" defaultValue={pastrie.quantity} onChange={event => setEditingPastryQuantity(event.target.value)} className="w-full text-center inline-block rounded-full px-8 py-2 transition border" type="number"/>
+                                <input key="image" defaultValue={pastrie.image} onChange={event => setEditingPastryImage(event.target.value)} className="w-full text-sm text-center inline-block rounded-sm px-2 py-1 transition border" type="text"/>
+                                <input key="name" defaultValue={pastrie.name} onChange={event => setEditingPastryName(event.target.value)} className="w-full text-sm text-center inline-block rounded-sm px-2 py-1 transition border" type="text"/>
+                                <input key="quantity" defaultValue={pastrie.quantity} onChange={event => setEditingPastryQuantity(event.target.value)} className="w-full text-sm text-center inline-block rounded-sm px-2 py-1 transition border" type="number"/>
                                 <div
                                     className="flex flex-row space-x-4">
                                     <div
                                         onClick={() => editPastryAttempt(pastrie.id)}
-                                        className="w-32 text-center inline-block rounded-full bg-slate-400 color-white px-8 py-2 text-white hover:bg-slate-600 transition">
+                                        className="w-32 text-sm font-semibold text-center border border-slate-300 inline-block rounded-sm bg-slate-50 color-white px-2 py-1 text-slate-500 hover:text-slate-600 hover:bg-slate-200 transition hover:cursor-pointer">
                                         Sauvegarder
                                     </div>
                                     <div
-                                        className="w-32 text-center inline-block rounded-full bg-red-400 color-white px-8 py-2 text-white hover:bg-red-600 transition"
+                                        className="w-32 text-sm font-semibold text-center border border-red-300 inline-block rounded-sm bg-red-500 color-white px-2 py-1 text-white hover:bg-red-700 transition hover:cursor-pointer"
                                         onClick={() => deletePastrieAttempt(pastrie.id)}>
                                         Supprimer
                                     </div>
@@ -165,9 +165,10 @@ export function AuthenticatedCrud() {
                         </div>
                     </div>
                 ) :
-                <div key={pastrie.id} onClick={() => showEditionForm(pastrie)} className="hover:bg-slate-100 hover:cursor-pointer hover:border-slate-300 border max-h-36 h-36 grid grid-cols-12 transition">
+                <div key={pastrie.id} onClick={() => showEditionForm(pastrie)}
+                     className="hover:bg-slate-100 hover:cursor-pointer hover:border-slate-300 border max-h-36 h-36 grid grid-cols-12 transition">
                     <div className="col-span-4 overflow-hidden">
-                        <img src="https://picsum.photos/200/300" className="object-cover w-full"
+                    <img src="https://picsum.photos/200/300" className="object-cover w-full"
                              alt={`Image of ${pastrie.name}`}/>
                     </div>
                     <div className="col-span-8 p-4">
@@ -181,7 +182,7 @@ export function AuthenticatedCrud() {
                                 onClick={() => showEditionForm(pastrie)}
                                 className="flex flex-row space-x-4">
                                 <div
-                                    className="w-32 text-center inline-block rounded-full bg-slate-400 color-white px-8 py-2 text-white hover:bg-slate-600 transition">
+                                    className="w-32 text-sm font-semibold text-center border border-slate-300 inline-block rounded-sm bg-slate-50 color-white px-2 py-1 text-slate-500 hover:text-slate-600 hover:bg-slate-200 transition">
                                     Modifier
                                 </div>
                             </div>
@@ -190,7 +191,7 @@ export function AuthenticatedCrud() {
                 </div>
         })}
         <button
-            className="w-full text-center inline-block rounded-full bg-blue-500 color-white px-8 py-2 text-white hover:bg-blue-700 transition"
+            className="w-full text-md font-semibold text-center border border-slate-300 inline-block rounded-sm bg-slate-50 color-white px-2 py-1 text-slate-500 hover:text-slate-600 hover:bg-slate-200 transition hover:cursor-pointer"
             onClick={logoutAttempt}>
             Déconnexion
         </button>

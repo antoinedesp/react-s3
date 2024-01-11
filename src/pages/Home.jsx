@@ -30,9 +30,9 @@ export default function Home() {
                               <div className="w-full">
                                   <img src="https://picsum.photos/200/300" className="object-cover" alt={`Image of ${pastrie.name}`}/>
                               </div>
-                              <div className="p-5">
-                                  <h1 className="text-md font-semibold text-slate-600">{pastrie.name}</h1>
-                              <div className="absolute text-2xl font-bold text-slate-300 right-5 bottom-5">{pastrie.quantity}</div>
+                              <div className="p-5 ">
+                                  <h1 className="text-md font-semibold text-blue-700">{pastrie.name}</h1>
+                              <div className="italic text-sm font-bold text-gray-400  bottom-5">Encore {pastrie.quantity} à gagner!</div>
                               </div>
                           </div>
                       );
